@@ -1,8 +1,16 @@
 package main
 
+import "fmt"
+
 var graph = make(map[string]map[string]bool)
 
 func main() {
+	addEdge("one", "two")
+	fmt.Println(graph)
+	addEdge("two", "three")
+	fmt.Println(graph)
+
+	fmt.Println(hasEdge("one", "two"))
 }
 
 func addEdge(from, to string) {
