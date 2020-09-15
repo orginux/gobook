@@ -19,9 +19,13 @@ func main() {
 	var dilvert Emloyee
 	fmt.Println(dilvert)
 
-	dilvert.Salary += 5000
-	position := &dilvert.Position
-	*position = "Senior " + *position
+	salary := &dilvert.Salary
+	*salary = 1000
 
+	Bonus(&dilvert, 20)
 	fmt.Println(dilvert)
+}
+
+func Bonus(e *Emloyee, percent int) {
+	e.Salary += e.Salary * percent / 100
 }
