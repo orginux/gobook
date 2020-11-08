@@ -14,13 +14,22 @@ type Movie struct {
 }
 
 var movies = []Movie{
-	{Title: "Casablanca", Year: 1942, Color: false, Actors: []string{"Humphrey"}},
+	{Title: "Casablanca", Year: 1942, Color: false, Actors: []string{"Humphrey Bogart", "Ingrid Bergman"}},
+	{Title: "Cool Hand Luke", Year: 1967, Color: true, Actors: []string{"Paul Newman"}},
 }
 
 func main() {
-	data, err := json.Marshal(movies)
+	data, err := json.MarshalIndent(movies, "", " ")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Marshal error: %s", err)
 	}
 	fmt.Printf("%s\n", data)
+
+	var titles []struct {
+		Title string
+	}
+	if err := json.Unmarshal(data, &titles); err != nil {
+		log.Fatalf("Unmarshal error: %s", err)
+	}
+	fmt.Println(titles)
 }
