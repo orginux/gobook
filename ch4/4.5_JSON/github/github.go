@@ -10,13 +10,13 @@ type IssuesSearchResult struct {
 }
 
 type Issue struct {
-	Number   int
-	HTMLURL  string `json:"html_url"`
-	Title    string
-	State    string
-	User     *User
-	CreateAt time.Time `json:"create_at"`
-	Body     string
+	Number    int
+	HTMLURL   string `json:"html_url"`
+	Title     string
+	State     string
+	User      *User
+	CreatedAt time.Time `json:"create_at"`
+	Body      string
 }
 
 type User struct {
